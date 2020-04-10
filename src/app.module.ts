@@ -11,6 +11,7 @@ import { OssModule } from './oss/oss.module';
 import { ConfigModule } from './config/config.module';
 import { OutlineService } from './outline/outline.service';
 import { OutlineModule } from './outline/outline.module';
+import { PriceModule } from './price/price.module';
 
 const confg = new ConfigService(`${process.env.NODE_ENV || 'development'}.env`)
 console.log(confg.get('DATABASE_HOST'))
@@ -29,7 +30,8 @@ console.log(confg.get('DATABASE_HOST'))
     TagsModule,
     OssModule,
     ConfigModule,
-    OutlineModule
+    OutlineModule,
+    PriceModule,
   ],
   controllers: [AppController],
   providers: [

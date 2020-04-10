@@ -23,6 +23,7 @@ type Mutation {
   updateOutline(input: OutlineUpdateInput!): OutlineType!
   deleteOutline(id: String!): OutlineType!
   pushOutline(id: String!, input: OutlineUpdateInput): String!
+  addPrices(url: String!): PriceTagBody!
 }
 
 type OssType {
@@ -119,6 +120,31 @@ input PostUpdateInput {
   id: ID!
 }
 
+input PriceAdd {
+  url: String!
+}
+
+input PriceListInput {
+  tag: String
+  limit: Float
+  offset: Float
+}
+
+type PriceTag {
+  value: String!
+  confidence: Float!
+}
+
+type PriceTagBody {
+  tags: String!
+  img: String!
+}
+
+type PriceType {
+  list: [PriceTagBody!]!
+  total: Float!
+}
+
 type Query {
   login(user: AuthInput!): AuthType!
   findOnePost(id: String!): PostType!
@@ -128,6 +154,7 @@ type Query {
   getPut(type: String!, name: String!): OssType!
   findOneOutline(id: String!): OutlineType!
   findOutlines(input: OutlineListInput!): OutlineTypeList!
+  getPrices(input: PriceListInput!): PriceType!
 }
 
 input TagAddInput {
